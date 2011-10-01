@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B20E275C-0302-4DE4-96AA-FA41FB73F3F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LittleNet.NDecompile.Tests</RootNamespace>
+    <AssemblyName>LittleNet.NDecompile.Tests</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Key.Snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="nunit.framework, Version=2.5.1.9189, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libraries\NUnit\nunit.framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyManagerTest.cs" />
+    <Compile Include="ControlFlowGraphTest.cs" />
+    <Compile Include="CSharpWriterTest.cs" />
+    <Compile Include="ExceptionHandlerTest.cs" />
+    <Compile Include="FlowControl.cs" />
+    <Compile Include="FrameworkDecompile.cs" />
+    <Compile Include="GuiImages.cs" />
+    <Compile Include="Model\Impl\ArgumentTests.cs" />
+    <Compile Include="Model\Impl\AttributeTests.cs" />
+    <Compile Include="Model\Impl\Idioms\ArgumentLoadTest.cs" />
+    <Compile Include="Model\Impl\Idioms\ArgumentSaveTest.cs" />
+    <Compile Include="Model\Impl\Idioms\ConstantLoadTest.cs" />
+    <Compile Include="Model\Impl\Idioms\FieldLoadTest.cs" />
+    <Compile Include="Model\Impl\Idioms\FieldSaveTest.cs" />
+    <Compile Include="Model\Impl\Idioms\PostDecrementTest.cs" />
+    <Compile Include="Model\Impl\Idioms\PreDecrementTest.cs" />
+    <Compile Include="Model\Impl\Idioms\PostIncrementTest.cs" />
+    <Compile Include="Model\Impl\Idioms\PreIncrementTest.cs" />
+    <Compile Include="Model\Impl\MethodBodyTest.cs" />
+    <Compile Include="PlainTextWriter.cs" />
+    <Compile Include="Sample.cs" />
+    <Compile Include="TestUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NDecompile\nDecompile.csproj">
+      <Project>{525F2623-A415-4B50-9D4B-C188E465C740}</Project>
+      <Name>nDecompile</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Key.Snk" />
+  </ItemGroup>
+</Project>

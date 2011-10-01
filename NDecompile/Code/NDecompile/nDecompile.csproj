@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{525F2623-A415-4B50-9D4B-C188E465C740}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LittleNet.NDecompile</RootNamespace>
+    <AssemblyName>LittleNet.NDecompile</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Key.Snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Reflector, Version=5.0.0.0, Culture=neutral, PublicKeyToken=18ca6bb8dd6a03c3">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Reflector\Reflector.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyManager.cs" />
+    <Compile Include="Model\IBaseReferenceExpression.cs" />
+    <Compile Include="Model\Impl\BaseReferenceExpression.cs" />
+    <Compile Include="Model\Impl\ControlFlowGraph.cs" />
+    <Compile Include="Model\Impl\MethodBody.cs" />
+    <Compile Include="Model\Impl\Idioms\ArgumentLoad.cs" />
+    <Compile Include="Model\Impl\Idioms\ArgumentSave.cs" />
+    <Compile Include="Model\Impl\Idioms\ConstantLoad.cs" />
+    <Compile Include="Model\Impl\Idioms\FieldSave.cs" />
+    <Compile Include="Model\Impl\Idioms\FieldLoad.cs" />
+    <Compile Include="Model\Impl\Idioms\PostDecrement.cs" />
+    <Compile Include="Model\Impl\Idioms\PostIncrement.cs" />
+    <Compile Include="Model\Impl\Idioms\PreDecrement.cs" />
+    <Compile Include="Model\Impl\Idioms\Idiom.cs" />
+    <Compile Include="Model\Impl\Idioms\PreIncrement.cs" />
+    <Compile Include="Model\Impl\Idioms\RedundantStoreLoad.cs" />
+    <Compile Include="OpCode.cs" />
+    <Compile Include="MsilBuiltInTypeNameTable.cs" />
+    <Compile Include="CSharpBuiltInTypeNameTable.cs" />
+    <Compile Include="CSharpWriter.cs" />
+    <Compile Include="IFormattedCodeWriter.cs" />
+    <Compile Include="ILanguageWriter.cs" />
+    <Compile Include="ILWriter.cs" />
+    <Compile Include="Model\FieldVisibility.cs" />
+    <Compile Include="Model\IAssembly.cs" />
+    <Compile Include="Model\IAssemblyReference.cs" />
+    <Compile Include="Model\IAttribute.cs" />
+    <Compile Include="Model\IAttributeProvider.cs" />
+    <Compile Include="Model\IBreakStatement.cs" />
+    <Compile Include="Model\ICatchClause.cs" />
+    <Compile Include="Model\IConstructorDeclaration.cs" />
+    <Compile Include="Model\IConstructorReference.cs" />
+    <Compile Include="Model\IDefaultCaseStatement.cs" />
+    <Compile Include="Model\IDoStatement.cs" />
+    <Compile Include="Model\ICallGraphNode.cs" />
+    <Compile Include="Model\IControlFlowGraph.cs" />
+    <Compile Include="Model\IGraphNode.cs" />
+    <Compile Include="Model\Impl\AssemblyReference.cs" />
+    <Compile Include="Model\Impl\Attribute.cs" />
+    <Compile Include="Model\Impl\BinaryExpression.cs" />
+    <Compile Include="Model\Impl\BreakStatement.cs" />
+    <Compile Include="Model\Impl\CallGraphNode.cs" />
+    <Compile Include="Model\Impl\CatchClause.cs" />
+    <Compile Include="Model\Impl\DefaultCaseStatement.cs" />
+    <Compile Include="Model\Impl\DoStatement.cs" />
+    <Compile Include="Model\Impl\Expression.cs" />
+    <Compile Include="Model\Impl\AddressDereferenceExpression.cs" />
+    <Compile Include="Model\Impl\AddressOfExpression.cs" />
+    <Compile Include="Model\Impl\ArgumentListExpression.cs" />
+    <Compile Include="Model\Impl\ArgumentReferenceExpression.cs" />
+    <Compile Include="Model\Impl\ArrayCreateExpression.cs" />
+    <Compile Include="Model\Impl\ArrayIndexerExpression.cs" />
+    <Compile Include="Model\Impl\AssignExpression.cs" />
+    <Compile Include="Model\Impl\BlockExpression.cs" />
+    <Compile Include="Model\Impl\BlockStatement.cs" />
+    <Compile Include="Model\Impl\CaseStatement.cs" />
+    <Compile Include="Model\Impl\CastExpression.cs" />
+    <Compile Include="Model\Impl\ConditionExpression.cs" />
+    <Compile Include="Model\Impl\ConditionStatement.cs" />
+    <Compile Include="Model\Impl\ExpressionStatement.cs" />
+    <Compile Include="Model\Impl\FieldReferenceExpression.cs" />
+    <Compile Include="Model\Impl\LoopType.cs" />
+    <Compile Include="Model\Impl\PropertyReferenceExpression.cs" />
+    <Compile Include="Model\Impl\ThrowExceptionStatement.cs" />
+    <Compile Include="Model\Impl\StackAllocateExpression.cs" />
+    <Compile Include="Model\Impl\MethodDeclaration.cs" />
+    <Compile Include="Model\Impl\NodeType.cs" />
+    <Compile Include="Model\Impl\SwitchStatement.cs" />
+    <Compile Include="Model\Impl\ThisReferenceExpression.cs" />
+    <Compile Include="Model\Impl\TryCatchFinallyStatement.cs" />
+    <Compile Include="Model\Impl\WhileStatement.cs" />
+    <Compile Include="Model\Impl\VariableReferenceExpression.cs" />
+    <Compile Include="Model\Impl\TypeOfExpression.cs" />
+    <Compile Include="Model\Impl\ValueOfTypedReferenceExpression.cs" />
+    <Compile Include="Model\Impl\UnaryExpression.cs" />
+    <Compile Include="Model\Impl\TypeReferenceExpression.cs" />
+    <Compile Include="Model\Impl\VariableDeclarationExpression.cs" />
+    <Compile Include="Model\Impl\Resource.cs" />
+    <Compile Include="Model\Impl\ObjectCreateExpression.cs" />
+    <Compile Include="Model\Impl\MethodReturnStatement.cs" />
+    <Compile Include="Model\Impl\MethodReferenceExpression.cs" />
+    <Compile Include="Model\Impl\MethodInvokeExpression.cs" />
+    <Compile Include="Model\Impl\LiteralExpression.cs" />
+    <Compile Include="Model\Impl\Instruction.cs" />
+    <Compile Include="Model\IAddressDereferenceExpression.cs" />
+    <Compile Include="Model\IAddressOfExpression.cs" />
+    <Compile Include="Model\IArgumentListExpression.cs" />
+    <Compile Include="Model\IArgumentReferenceExpression.cs" />
+    <Compile Include="Model\IArrayCreateExpression.cs" />
+    <Compile Include="Model\IArrayIndexerExpression.cs" />
+    <Compile Include="Model\Impl\Assembly.cs" />
+    <Compile Include="Model\IAssignExpression.cs" />
+    <Compile Include="Model\IBinaryExpression.cs" />
+    <Compile Include="Model\BinaryOperator.cs" />
+    <Compile Include="Model\IBlockExpression.cs" />
+    <Compile Include="Model\IBlockStatement.cs" />
+    <Compile Include="Model\ICastExpression.cs" />
+    <Compile Include="Model\ICaseStatement.cs" />
+    <Compile Include="Model\IConditionExpression.cs" />
+    <Compile Include="Model\IConditionStatement.cs" />
+    <Compile Include="Model\IEventDeclaration.cs" />
+    <Compile Include="Model\IEventReference.cs" />
+    <Compile Include="Model\IExpression.cs" />
+    <Compile Include="Model\IExpressionStatement.cs" />
+    <Compile Include="Model\IFieldDeclaration.cs" />
+    <Compile Include="Model\IFieldReference.cs" />
+    <Compile Include="Model\IFieldReferenceExpression.cs" />
+    <Compile Include="Model\IInstruction.cs" />
+    <Compile Include="Model\ILiteralExpression.cs" />
+    <Compile Include="Model\IMemberDeclaration.cs" />
+    <Compile Include="Model\IMemberReference.cs" />
+    <Compile Include="Model\IMethodBody.cs" />
+    <Compile Include="Model\IMethodDeclaration.cs" />
+    <Compile Include="Model\IMethodInvokeExpression.cs" />
+    <Compile Include="Model\IMethodReference.cs" />
+    <Compile Include="Model\IMethodReferenceExpression.cs" />
+    <Compile Include="Model\IMethodReturnStatement.cs" />
+    <Compile Include="Model\IMethodSignature.cs" />
+    <Compile Include="Model\Impl\Module.cs" />
+    <Compile Include="Model\Impl\ConstructorDeclaration.cs" />
+    <Compile Include="Model\Impl\EventDeclaration.cs" />
+    <Compile Include="Model\Impl\FieldDeclaration.cs" />
+    <Compile Include="Model\Impl\Statement.cs" />
+    <Compile Include="Model\Impl\MethodDeclarationBase.cs" />
+    <Compile Include="Model\Impl\ParameterDeclaration.cs" />
+    <Compile Include="Model\Impl\PropertyDeclaration.cs" />
+    <Compile Include="Model\Impl\TypeDeclaration.cs" />
+    <Compile Include="Model\Impl\VariableDeclaration.cs" />
+    <Compile Include="Model\IObjectCreateExpression.cs" />
+    <Compile Include="Model\IParameterDeclaration.cs" />
+    <Compile Include="Model\IParameterReference.cs" />
+    <Compile Include="Model\IPropertyDeclaration.cs" />
+    <Compile Include="Model\IPropertyReference.cs" />
+    <Compile Include="Model\IPropertyReferenceExpression.cs" />
+    <Compile Include="Model\IResource.cs" />
+    <Compile Include="Model\IResourceReference.cs" />
+    <Compile Include="Model\IStackAllocateExpression.cs" />
+    <Compile Include="Model\IStatement.cs" />
+    <Compile Include="Model\ISwitchStatement.cs" />
+    <Compile Include="Model\IThisReferenceExpression.cs" />
+    <Compile Include="Model\IThrowExceptionStatement.cs" />
+    <Compile Include="Model\ITryCatchFinallyStatement.cs" />
+    <Compile Include="Model\ITypeDeclaration.cs" />
+    <Compile Include="Model\ITypeOfExpression.cs" />
+    <Compile Include="Model\ITypeReference.cs" />
+    <Compile Include="Model\ITypeReferenceExpression.cs" />
+    <Compile Include="Model\IUnaryExpression.cs" />
+    <Compile Include="Model\MethodVisibility.cs" />
+    <Compile Include="Model\IModule.cs" />
+    <Compile Include="Model\IModuleReference.cs" />
+    <Compile Include="Model\TypeVisibility.cs" />
+    <Compile Include="Model\UnaryOperator.cs" />
+    <Compile Include="Model\IValueOfTypedReferenceExpression.cs" />
+    <Compile Include="Model\IVariableDeclaration.cs" />
+    <Compile Include="Model\IVariableDeclarationExpression.cs" />
+    <Compile Include="Model\IVariableReference.cs" />
+    <Compile Include="Model\IVariableReferenceExpression.cs" />
+    <Compile Include="Model\IWhileStatement.cs" />
+    <Compile Include="OpCodeTable.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Key.Snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
