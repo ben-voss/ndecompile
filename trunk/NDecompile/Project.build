@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<project name="NDecompile" default="integrate" basedir=".">
+
+	<target name="build" depends="compile.debug"/>
+	<target name="integrate" depends="build,unit.test" />
+
+	<!-- Locations of all the build tools -->
+	<property name="msbuild"			value="C:\WINDOWS\Microsoft.NET\Framework\v3.5\MSBuild.exe"/>
+	
+	<property name="framework.path"			value="C:\WINDOWS\Microsoft.NET\Framework\v3.5\"/>
+
+	<!-- Locations of sources -->
+	<property name="ClientSolution.file"		value="${project::get-base-directory()}\Code\NDecompile.sln" />
+
+	<!-- Locations of compile targets -->
+	<property name="unit.tests.debug.target"	value="Code\NDecompile Tests\bin\debug\LittleNet.NDecompile.Tests.dll"/>
+
+	<!-- Location of build results-->
+	<property name="unit.test.results" value="${project::get-base-directory()}/UnitTestResults.xml"/>
+
+	<target name="clean">
+		<delete failonerror="false" dir="Code\NDecompile\bin" />
+		<delete failonerror="false" dir="Code\NDecompile\obj" />
+		<delete failonerror="false" dir="Code\NDecompile Console\bin" />
+		<delete failonerror="false" dir="Code\NDecompile Console\obj" />
+		<delete failonerror="false" dir="Code\NDecompile Forms UI\bin" />
+		<delete failonerror="false" dir="Code\NDecompile Forms UI\obj" />
+		<delete failonerror="false" dir="Code\NDecompile Tests\bin" />
+		<delete failonerror="false" dir="Code\NDecompile Tests\obj" />
+		<delete failonerror="false" dir="Code\_ReSharper.NDecompile" />
+		<delete failonerror="false" dir="Code\test-results" />
+		<delete failonerror="false" dir="Code\NDecompile Tests\test-results" />
+		<delete failonerror="false" file="LittleNet.NDecompile.Tests.dll-results.xml" />
+		<delete failonerror="false" file="Code\NDecompile.sln.cache" />
+		<delete failonerror="false" file="Code\NDecompile.suo" />
+		<delete failonerror="false" file="Code\NDecompile.userprefs" />
+		<delete failonerror="false">
+			<fileset>
+				<include name="**\Thumbs.db"/>
+				<include name="**\*.user"/>
+				<include name="**\*.pidb"/>
+				<include name="**\.DS_Store"/>
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="backup" depends="clean">
+		<delete failonerror="false" file="..\NDecompile.zip" />
+		<zip zipfile="..\NDecompile.zip">
+			<fileset basedir=".">
+				<include name="**/*" />
+			</fileset>
+		</zip>
+	</target>
+	
+	<!-- Builds the solution -->
+	<target name="compile.debug" depends="clean">
+
+		<exec program="${msbuild}" >
+			<arg value="${ClientSolution.file}"/>
+			<arg value="/t:Rebuild" />
+			<arg value="/p:Configuration=&quot;Debug&quot;" />
+		</exec>
+
+	</target>
+
+
+	<!-- Runs the tests -->
+	<target name="unit.test" depends="compile.debug">
+		<nunit2>
+			<formatter type="Xml" usefile="true" extension=".xml" outputdir="${project::get-base-directory()}" />
+			<test assemblyname="${unit.tests.debug.target}" />
+		</nunit2>
+		<move file="${project::get-base-directory()}/LittleNet.NDecompile.Tests.dll-results.xml" tofile="${unit.test.results}" />
+	</target>
+
+</project>
